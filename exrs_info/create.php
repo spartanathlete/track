@@ -21,8 +21,10 @@
     $data = json_decode(file_get_contents("php://input"));
 
     //set exrInfo values
-    $exrInfo->name = $data->name;
-    $exrInfo->description = $data->description;
+    $exrInfo->reps = $data->reps;
+    $exrInfo->sets = $data->sets;
+    $exrInfo->weight = $data->weight;
+    $exrInfo->exr_id = $data->exr_id;
     $exrInfo->date = date('Y-m-d');
 
     //Create exrInfo

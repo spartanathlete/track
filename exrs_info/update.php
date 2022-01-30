@@ -22,9 +22,10 @@
 
     //set Id and values of exrInfo to be edited
     $exrInfo->id = $data->id;
-    $exrInfo->name = $data->name;
-    $exrInfo->description = $data->description;
-    $exrInfo->date = $data->date;
+    $exrInfo->reps = $data->reps;
+    $exrInfo->sets = $data->sets;
+    $exrInfo->weight = $data->weight;
+    $exrInfo->exr_id = $data->exr_id;
 
     //update exrInfo
     if ($exrInfo->update()){

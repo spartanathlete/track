@@ -1,8 +1,8 @@
 <?php
     /**
-        *contains properties and methods for "day" database queries.
+        *contains properties and methods for "exercice" database queries.
     */
-    class Day {
+    class Exercice {
 
         //DB connection and table
         private $conn;
@@ -19,7 +19,33 @@
             $this->conn = $db;
         }
 
-        //Read day
+        //Create exercice
+        function create() {
+            // query to insert record
+            $query = "insert into " . $this->table_name . " set name=:name, description=:description, date=:date";
+            
+            // prepare query
+            $stmt = $this->conn->prepare($query);
+            
+            // sanitize
+            $this->name=htmlspecialchars(strip_tags($this->name));
+            $this->description=htmlspecialchars(strip_tags($this->description));
+            $this->date=htmlspecialchars(strip_tags($this->date));
+            
+            // bind values
+            $stmt->bindParam(":name", $this->name);
+            $stmt->bindParam(":description", $this->description);
+            $stmt->bindParam(":date", $this->date);
+            
+            // execute query
+            if($stmt->execute()){
+                return true;
+            }
+            
+            return false;
+        }
+
+        //Read exercice
         function read(){
 
             //select all
@@ -35,7 +61,7 @@
 
         }
 
-        //update day
+        //update exercice
         function update(){
 
             //update query
@@ -64,7 +90,7 @@
             return false;
         }
 
-        //delete day
+        //delete exercice
         function delete(){
 
             //delete query

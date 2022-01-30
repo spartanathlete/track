@@ -33,8 +33,10 @@
 
             $exrInfo_item = array(
                 "id" => $id,
-                "name" => $name,
-                "description" => html_entity_decode($description),
+                "reps" => $reps,
+                "sets" => $sets,
+                "weight" => $weight,
+                "exr_id" => $exr_id,
                 "date" => $date
             );
 

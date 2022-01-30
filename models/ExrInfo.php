@@ -1,8 +1,8 @@
 <?php
     /**
-        *contains properties and methods for "day" database queries.
+        *contains properties and methods for "exrInfo" database queries.
     */
-    class Day {
+    class ExrInfo {
 
         //DB connection and table
         private $conn;
@@ -10,8 +10,10 @@
 
         //Object properties
         public $id;
-        public $name;
-        public $description;
+        public $reps;
+        public $sets;
+        public $weight;
+        public $exr_id;
         public $date;
 
         //Constructor with db conn
@@ -19,7 +21,37 @@
             $this->conn = $db;
         }
 
-        //Read day
+        //Create exrInfo
+        function create() {
+            // query to insert record
+            $query = "insert into " . $this->table_name . " set reps=:reps, sets=:sets, weight=:weight, exr_id=:exr_id, date=:date";
+            
+            // prepare query
+            $stmt = $this->conn->prepare($query);
+            
+            // sanitize
+            $this->reps=htmlspecialchars(strip_tags($this->reps));
+            $this->sets=htmlspecialchars(strip_tags($this->sets));
+            $this->weight=htmlspecialchars(strip_tags($this->weight));
+            $this->exr_id=htmlspecialchars(strip_tags($this->exr_id));
+            $this->date=htmlspecialchars(strip_tags($this->date));
+            
+            // bind values
+            $stmt->bindParam(":reps", $this->reps);
+            $stmt->bindParam(":sets", $this->sets);
+            $stmt->bindParam(":weight", $this->weight);
+            $stmt->bindParam(":exr_id", $this->exr_id);
+            $stmt->bindParam(":date", $this->date);
+            
+            // execute query
+            if($stmt->execute()){
+                return true;
+            }
+            
+            return false;
+        }
+
+        //Read exrInfo
         function read(){
 
             //select all
@@ -35,25 +67,27 @@
 
         }
 
-        //update day
+        //update exrInfo
         function update(){
 
             //update query
-            $query = "update " . $this->table_name . " set name=:name, description=:description, date=:date where id=:id";
+            $query = "update " . $this->table_name . " set reps=:reps, sets=:sets, weight=:weight, exr_id=:exr_id where id=:id";
 
             //prepare
             $stmt = $this->conn->prepare($query);
 
             //sanitize
-            $this->name=htmlspecialchars(strip_tags($this->name));
-            $this->description=htmlspecialchars(strip_tags($this->description));
-            $this->date=htmlspecialchars(strip_tags($this->date));
+            $this->reps=htmlspecialchars(strip_tags($this->reps));
+            $this->sets=htmlspecialchars(strip_tags($this->sets));
+            $this->weight=htmlspecialchars(strip_tags($this->weight));
+            $this->exr_id=htmlspecialchars(strip_tags($this->exr_id));
             $this->id=htmlspecialchars(strip_tags($this->id));
 
             //bind new values
-            $stmt->bindParam(':name', $this->name);
-            $stmt->bindParam(':description', $this->description);
-            $stmt->bindParam(':date', $this->date);
+            $stmt->bindParam(':reps', $this->reps);
+            $stmt->bindParam(':sets', $this->sets);
+            $stmt->bindParam(':weight', $this->weight);
+            $stmt->bindParam(':exr_id', $this->exr_id);
             $stmt->bindParam(':id', $this->id);
 
             //execute
@@ -64,7 +98,7 @@
             return false;
         }
 
-        //delete day
+        //delete exrInfo
         function delete(){
 
             //delete query
