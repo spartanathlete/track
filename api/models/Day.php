@@ -127,8 +127,13 @@
 
             //execute
             $stmt->execute();
+            
+            // get retrieved row
+            $row = $stmt->fetch(PDO::FETCH_ASSOC);
 
-            return $stmt;
-
+            // set values to object properties
+            $this->name = $row['name'];
+            $this->description = $row['description'];
+            $this->date = $row['date'];
         }
     }

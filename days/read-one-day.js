@@ -41,7 +41,7 @@ $(document).ready(function(){
             $("#page-content").html(read_one_day_html);
             
             // chage page title
-            changePageTitle("Create Day");
+            changePageTitle("Day Details");
         });
     });
  
