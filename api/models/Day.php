@@ -14,6 +14,8 @@
         public $description;
         public $date;
 
+        
+
         //Constructor with db conn
         public function __construct($db) {
             $this->conn = $db;
@@ -124,7 +126,6 @@
 
             //Bind data
             $stmt->bindParam(1, $this->id);
-            $stmt->bindParam(2, $this->date);
 
             //execute
             $stmt->execute();

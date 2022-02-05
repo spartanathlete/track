@@ -20,7 +20,6 @@
     
     // set ID property of record to read
     $day->id = isset($_GET['id']) ? $_GET['id'] : die();
-    $day->date = isset($_GET['date']) ? $_GET['date'] : die();
     
     // read the details of day to be edited
     $day->readOne();
