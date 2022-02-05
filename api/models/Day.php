@@ -117,13 +117,14 @@
         function readOne(){
 
             //select all
-            $query = "select * from " . $this->table_name . " where id=?";
+            $query = "select * from days where id=?";
 
             //prepare
             $stmt = $this->conn->prepare($query);
 
             //Bind data
             $stmt->bindParam(1, $this->id);
+            $stmt->bindParam(2, $this->date);
 
             //execute
             $stmt->execute();
