@@ -23,7 +23,7 @@
     //set day values
     $day->name = $data->name;
     $day->description = $data->description;
-    $day->date = date('Y-m-d');
+    $day->date = $data->date;
 
     //Create day
     if ($day->create()) {

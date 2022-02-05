@@ -112,4 +112,23 @@
 
             return false;
         }
+
+        //Read one day
+        function readOne(){
+
+            //select all
+            $query = "select * from " . $this->table_name . " where id=?";
+
+            //prepare
+            $stmt = $this->conn->prepare($query);
+
+            //Bind data
+            $stmt->bindParam(1, $this->id);
+
+            //execute
+            $stmt->execute();
+
+            return $stmt;
+
+        }
     }
