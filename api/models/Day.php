@@ -14,7 +14,11 @@
         public $description;
         public $date;
 
-        
+        //Exercices details props
+        public $ex_name;
+        public $reps;
+        public $sets;
+        public $weight;
 
         //Constructor with db conn
         public function __construct($db) {
@@ -96,7 +100,7 @@
         function delete(){
 
             //delete query
-            $query = "delete from " . $this->table_name . " where id = ?";
+            $query = "delete from " . $this->table_name . " where id=?";
 
             //prepare
             $stmt = $this->conn->prepare($query);
@@ -116,8 +120,7 @@
         }
 
         //Read one day
-        function readOne(){
-
+        function readOne() {
             //select all
             $query = "select * from days where id=?";
 

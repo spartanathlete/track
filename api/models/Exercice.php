@@ -112,4 +112,20 @@
 
             return false;
         }
+
+        function read_() {
+            //select all
+            $query = "select * from exercices where date=?";
+
+            //prepare
+            $stmt = $this->conn->prepare($query);
+
+            //bind id
+            $stmt->bindParam(1, $this->date);
+
+            //execute
+            $stmt->execute();
+
+            return $stmt;
+        }
     }

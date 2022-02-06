@@ -35,7 +35,10 @@ $(document).ready(function(){
                     <td>` + data.date + `</td>
                 </tr>
             
-            </table>`;
+            </table>
+            <button class='btn btn-primary m-r-10px read-exercices-button' data-date='` + data.date + `'>
+                <span class='glyphicon glyphicon-eye-open'></span> Read Exercices
+            </button>`;
 
             // inject html to 'page-content' of our app
             $("#page-content").html(read_one_day_html);
@@ -44,5 +47,4 @@ $(document).ready(function(){
             changePageTitle("Day Details");
         });
     });
- 
 });

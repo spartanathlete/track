@@ -41,7 +41,7 @@ function showDays(){
                         <!-- 'action' buttons -->
                         <td>
                             <!-- read day button -->
-                            <button class='btn btn-primary m-r-10px read-one-day-button' data-id='` + val.id + `'>
+                            <button class='btn btn-primary m-r-10px read-one-day-button' data-id='` + val.id + ` data-date='` + val.date + `'>
                                 <span class='glyphicon glyphicon-eye-open'></span> Read
                             </button>
             
