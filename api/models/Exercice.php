@@ -12,7 +12,10 @@
         public $id;
         public $name;
         public $description;
-        public $date;
+        public $reps;
+        public $sets;
+        public $weight;
+        public $day_id;
 
         //Constructor with db conn
         public function __construct($db) {
@@ -49,10 +52,13 @@
         function read(){
 
             //select all
-            $query = "select * from " . $this->table_name;
+            $query = "select * from exercices where day_id=?";
 
             //prepare
             $stmt = $this->conn->prepare($query);
+
+            //bind id
+            $stmt->bindParam(1, $this->day_id);
 
             //execute
             $stmt->execute();
@@ -111,21 +117,5 @@
             }
 
             return false;
-        }
-
-        function read_() {
-            //select all
-            $query = "select * from exercices where day_id=?";
-
-            //prepare
-            $stmt = $this->conn->prepare($query);
-
-            //bind id
-            $stmt->bindParam(1, $this->id);
-
-            //execute
-            $stmt->execute();
-
-            return $stmt;
         }
     }

@@ -9,7 +9,7 @@ $(document).ready(function(){
 function showDays(){
     // get list of days from the API
     $.getJSON("http://localhost/api/track_rest_api/api/days/read.php", function(data){
-
+        
         // html for listing days
         var read_days_html=`
         <!-- when clicked, it will load the create day form -->
@@ -67,7 +67,6 @@ function showDays(){
 
         // chage page title
         changePageTitle("Read Days");
-
     });
 }
 

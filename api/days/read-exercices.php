@@ -2,6 +2,9 @@
 
     //Required headers
     header("Access-Control-Allow-Origin: *");
+    header("Access-Control-Allow-Headers: access");
+    header("Access-Control-Allow-Methods: GET");
+    header("Access-Control-Allow-Credentials: true");
     header("Content-Type: application/json; charset=UTF-8");
 
     //Include db and object
@@ -13,12 +16,11 @@
     $db = $database->getConnection();
     $exercice = new Exercice($db);
 
-    
     // set ID property of record to read
-    $exercice->id = isset($_GET['id']) ? $_GET['id'] : die();
+    $exercice->day_id = isset($_GET['id']) ? $_GET['id'] : die();
 
     //Query exercices
-    $stmt = $exercice->read_();
+    $stmt = $exercice->read();
     $num = $stmt->rowCount();
 
     //Check if more than 0 record found
@@ -26,7 +28,7 @@
 
         //exercices array
         $exercices_arr = array();
-        //$exercices_arr["records"] = array();
+        $exercices_arr["records"] = array();
 
         //retrieve table content
         while ($row = $stmt->fetch(PDO::FETCH_ASSOC)){
@@ -38,11 +40,14 @@
             $exercice_item = array(
                 "id" => $id,
                 "name" => $name,
-                "description" => $description,
+                "description" => html_entity_decode($description),
+                "reps" => $reps,
+                "sets" => $sets,
+                "weight" => $weight,
                 "day_id" => $day_id
             );
 
-            array_push($exercices_arr, $exercice_item);
+            array_push($exercices_arr["records"], $exercice_item);
         }
 
         echo json_encode($exercices_arr);
