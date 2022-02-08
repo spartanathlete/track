@@ -6,27 +6,27 @@
 
     //Include db and object
     include_once '../config/Database.php';
-    include_once '../models/Exercice.php';
+    include_once '../models/ExrInfo.php';
 
     //New instances
     $database = new Database();
     $db = $database->getConnection();
-    $exercice = new Exercice($db);
+    $exr_info = new ExrInfo($db);
 
     
     // set ID property of record to read
-    $exercice->id = isset($_GET['id']) ? $_GET['id'] : die();
+    $exr_info->id = isset($_GET['id']) ? $_GET['id'] : die();
 
-    //Query exercices
-    $stmt = $exercice->read_();
+    //Query exrs_info
+    $stmt = $exr_info->read__();
     $num = $stmt->rowCount();
 
     //Check if more than 0 record found
     if($num > 0){
 
-        //exercices array
-        $exercices_arr = array();
-        $exercices_arr["records"] = array();
+        //exrs_info array
+        $exrs_info_arr = array();
+        $exrs_info_arr["records"] = array();
 
         //retrieve table content
         while ($row = $stmt->fetch(PDO::FETCH_ASSOC)){
@@ -35,19 +35,19 @@
             // just $name only
             extract($row);
 
-            $exercice_item = array(
+            $exr_info_item = array(
                 "id" => $id,
                 "name" => $name,
                 "description" => $description,
                 "day_id" => $day_id
             );
 
-            array_push($exercices_arr["records"], $exercice_item);
+            array_push($exrs_info_arr["records"], $exr_info_item);
         }
 
-        echo json_encode($exercices_arr);
+        echo json_encode($exrs_info_arr);
     } else {
         echo json_encode(
-            array("messege" => "No exercices found.")
+            array("messege" => "No exrs_info found.")
         );
     }

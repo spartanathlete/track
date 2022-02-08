@@ -115,13 +115,13 @@
 
         function read_() {
             //select all
-            $query = "select * from exercices where date=?";
+            $query = "select * from exercices where day_id=?";
 
             //prepare
             $stmt = $this->conn->prepare($query);
 
             //bind id
-            $stmt->bindParam(1, $this->date);
+            $stmt->bindParam(1, $this->id);
 
             //execute
             $stmt->execute();

@@ -32,15 +32,13 @@
     <!-- app js script -->
     <script src="app.js"></script>
     
-    <!-- days scripts -->
-    <script src="days/create-day.js"></script>
-    <script src="days/read-days.js"></script>
-    <script src="days/read-one-day.js"></script>
-    <script src="days/update-day.js"></script>
-    <script src="days/delete-day.js"></script>
-
-    <!-- days scripts -->
-    <script src="exercices/read-od-exercices.js"></script>
+    <!-- js scripts -->
+    <script src="js/create-day.js"></script>
+    <script src="js/read-days.js"></script>
+    <script src="js/read-one-day.js"></script>
+    <script src="js/update-day.js"></script>
+    <script src="js/delete-day.js"></script>
+    <script src="js/read-exercices.js"></script>
     
 </body>
 </html>

@@ -120,4 +120,37 @@
 
             return false;
         }
+
+        function read_() {
+            //select all
+            $query = "select * from exrs_info where day_id=? and ex_id=?";
+
+            //prepare
+            $stmt = $this->conn->prepare($query);
+
+            //bind id
+            $stmt->bindParam(1, $this->id);
+            $stmt->bindParam(2, $this->exr_id);
+
+            //execute
+            $stmt->execute();
+
+            return $stmt;
+        }
+        
+        function read__() {
+            //select all
+            $query = "select * from exercices where day_id=?";
+
+            //prepare
+            $stmt = $this->conn->prepare($query);
+
+            //bind id
+            $stmt->bindParam(1, $this->id);
+
+            //execute
+            $stmt->execute();
+
+            return $stmt;
+        }
     }
