@@ -26,7 +26,7 @@
 
         //exercices array
         $exercices_arr = array();
-        $exercices_arr["records"] = array();
+        //$exercices_arr["records"] = array();
 
         //retrieve table content
         while ($row = $stmt->fetch(PDO::FETCH_ASSOC)){
@@ -42,7 +42,7 @@
                 "day_id" => $day_id
             );
 
-            array_push($exercices_arr["records"], $exercice_item);
+            array_push($exercices_arr, $exercice_item);
         }
 
         echo json_encode($exercices_arr);
