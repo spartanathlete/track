@@ -30,7 +30,7 @@ $(document).ready(function(){
                     <tr>
                         <td></td>
                         <td>
-                            <button type='submit' class='btn btn-primary'>
+                            <button type='submit' class='btn btn-primary data-id=  '>
                                 <span class='glyphicon glyphicon-plus'></span> Create Day
                             </button>
                         </td>
@@ -38,12 +38,13 @@ $(document).ready(function(){
             
                 </table>
             </form>`;
+
+        // chage page title
+        changePageTitle("Create Day");
+
         // inject html to 'page-content' of our app
         $("#page-content").html(create_day_html);
     });
-    
-    // chage page title
-    changePageTitle("Create Day");
 
     // will run if create day form was submitted
     $(document).on('submit', '#create-day-form', function(){
